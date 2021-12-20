@@ -27,4 +27,17 @@ public class BooksController {
         model.addAttribute("booksList",books);
         return "allBooks";
     }
+
+    @RequestMapping("/toAddBook")
+    public String toAddBook(Model model){
+        return "addBook";
+    }
+
+    @RequestMapping("/addBook")
+    public String addBook(Books book){
+        System.out.println(book);
+        booksService.addBook(book);
+        return "redirect:/books/all";
+    }
+
 }
