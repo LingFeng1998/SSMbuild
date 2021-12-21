@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -27,6 +29,14 @@ public class BooksController {
         List<Books> books = booksService.queryAllBook();
         model.addAttribute("booksList",books);
         return "allBooks";
+    }
+
+    @RequestMapping("/allBook")
+    @ResponseBody
+    public List<Books> AllBooks(){
+        List<Books> books = booksService.queryAllBook();
+
+        return books;
     }
 
     @RequestMapping("/toAddBook")
